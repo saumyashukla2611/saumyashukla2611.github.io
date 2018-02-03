@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[Untitled RSS Feed]]></description><link>https://saumyashukla2611.github.io</link><generator>RSS for Node</generator><lastBuildDate>Sat, 03 Feb 2018 23:06:08 GMT</lastBuildDate><atom:link href="https://saumyashukla2611.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Contact List using just CSS]]></title><description><![CDATA[<div class="paragraph">
+<p>HTML/CSS seems to be easy languages but when you start drowning in its Deep Ocean, precision and accuracy are the lifeguards. With this simple code pen, I have learned many lessons. This article is based on one of the most simple but effective property, position: sticky.</p>
+</div>
+<p data-height="265" data-theme-id="0" data-slug-hash="eVJrGa" data-default-tab="css,result" data-user="GirlWhoCodes26" data-embed-version="2" data-pen-title="eVJrGa" class="codepen">See the Pen <a href="https://codepen.io/GirlWhoCodes26/pen/eVJrGa/">eVJrGa</a> by Saumya Shukla (<a href="https://codepen.io/GirlWhoCodes26">@GirlWhoCodes26</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+<div class="paragraph">
+<p>position:sticky; lets you stick the element on the screen. The most common example is sticky header where on scroll, the position of the header is intact and we can view the scrolled content on the page.</p>
+</div>
+<div class="paragraph">
+<p>The Demo presented here uses the same concept. I am replicating a contact list view that sticks the alphabet header onto the top using position:sticky;</p>
+</div>]]></description><link>https://saumyashukla2611.github.io/2018/02/03/Contact-List-using-just-CSS.html</link><guid isPermaLink="true">https://saumyashukla2611.github.io/2018/02/03/Contact-List-using-just-CSS.html</guid><category><![CDATA[HubPress]]></category><category><![CDATA[Blog]]></category><category><![CDATA[Open_Source]]></category><pubDate>Sat, 03 Feb 2018 00:00:00 GMT</pubDate></item></channel></rss>
