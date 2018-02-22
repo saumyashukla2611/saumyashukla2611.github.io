@@ -22,7 +22,7 @@ image_info(tj)
 ----
 
 
-You can use image_display to see the image inside the plot section in R but its only available to preview the image in an X11 window.
+You can use image_display to see the image but its only available to preview the image in an X11 window.
 
 There are many transformation options available with this package which makes your task easier of not using another tool to crop, modify, scale or even change coloring in the image. I have taken image examples from my favorite childhood cartoon series, Recess..lol.. lets see the transformation options.
 ----
