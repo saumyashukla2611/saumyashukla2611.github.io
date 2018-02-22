@@ -1,0 +1,108 @@
+= Exploring Magick Package in R
+:hp-tags: magick
+
+Looking for image transformations and changes in R? Here is your package.
+
+While reading about various packages in R, I came across this super fun package called as magick. It was published in December 2017 with version 1.6 and is a very comprehensive open source image processing library. The package supports various file formats and handlings. Well, the use of this package depends upon the user but I am planning to implement this in my Rshiny application.
+
+To Install and load the package in R:
+
+----
+install.packages("magick", repos = "http://cran.us.r-project.org/bin/windows/contrib/3.3/magick_1.6.zip")
+library(magick)
+----
+I have a set a working directory, where I have saved all the images I am going to use for this demo. You can easy set it inside R: Session -> Set Working Directory. After this, there is no need of giving absolute path.
+
+To load the image file
+----
+tj <- image_read('tj.jpg')
+image_info(tj)
+----
+
+
+You can use image_display to see the image inside the plot section in R but its only available to preview the image in an X11 window.
+
+There are many transformation options available with this package which makes your task easier of not using another tool to crop, modify, scale or even change coloring in the image. I have taken image examples from my favorite childhood cartoon series, Recess..lol.. lets see the transformation options.
+----
+p1 <- image_read("tj.jpg")
+print(p1)
+##   format width height colorspace matte filesize
+## 1   JPEG   480    360       sRGB FALSE    26673
+----
+image::https://raw.githubusercontent.com/saumyashukla2611/saumyashukla2611.github.io/master/images/1.PNG[]
+
+
+Well, I think TJ would look smarter with the border around the image.. what say?
+----
+image_border(image_background(tj, "orange"), "#FFA500", "10x10")
+----
+image::https://raw.githubusercontent.com/saumyashukla2611/saumyashukla2611.github.io/master/images/2.PNG[]
+
+
+Use can include any color with the color code, also it provides flexibility to change border dimensions.
+
+Well, how about some text in the image? I can generate my own memes you see..
+----
+image_annotate(tj, "WHY ME??", size = 40, color = "ORANGE", boxcolor = "BLACK",
+degrees = 40, location = "+22+20")
+----
+image::https://raw.githubusercontent.com/saumyashukla2611/saumyashukla2611.github.io/master/images/3.PNG[]
+  
+
+You can change the degrees upto which you want to rotate the image, the positioning of the text could be changed. +22 refers from the left end side position and +20 from the right hand side.
+
+Well, hey Spinelli, why so blurrrr?
+----
+p2 <- image_read("spinelli.jpg")
+image_blur(p2,10,5)
+----
+image::https://raw.githubusercontent.com/saumyashukla2611/saumyashukla2611.github.io/master/images/4.PNG[]
+
+Here, 10 represents radius and 5 represents sigma value.
+----
+p3 <- image_read("recess_gus.jpg")
+image_charcoal(p3)
+----
+image::https://raw.githubusercontent.com/saumyashukla2611/saumyashukla2611.github.io/master/images/5.PNG[]
+
+There many other options available, you can check it out from the link provided in the source section.
+
+We can use animations as well, since all functions in magick supports working with layers.
+----
+p4 <- image_read("Mikey.gif") %>%
+  image_scale("300x") %>%
+  image_quantize(256)
+print(p4)
+##   format width height colorspace matte filesize
+## 1    GIF   300    220       sRGB  TRUE        0
+## 2    GIF   300    220       sRGB  TRUE        0
+## 3    GIF   300    221       sRGB  TRUE        0
+## 4    GIF   300    220       sRGB  TRUE        0
+## 5    GIF   300    223       sRGB  TRUE        0
+----
+image::https://raw.githubusercontent.com/saumyashukla2611/saumyashukla2611.github.io/master/images/6.gif[]
+----
+image_flip(p4)
+----
+image::https://raw.githubusercontent.com/saumyashukla2611/saumyashukla2611.github.io/master/images/7.gif[]
+
+You can also morph the images:
+----
+p5 <- image_scale(image_read("vincent.jpg"), "x100")
+p6 <- image_scale(image_read("gretchen.jpg"), "x100")
+frame <- image_morph(c(p5, p6), frames = 10)
+image_animate(frame)
+----
+image::https://raw.githubusercontent.com/saumyashukla2611/saumyashukla2611.github.io/master/images/8.gif[]
+
+fun..right??
+----
+library(datasets)
+library(ggplot2)
+library(grid)
+data("AirPassengers")
+plot(AirPassengers, ylab="Passengers(1000s)", type="o", pch =20)
+grid.raster(tj,just = "bottom" , height = 0.4)
+----
+image::https://raw.githubusercontent.com/saumyashukla2611/saumyashukla2611.github.io/master/images/9.png[]
+
