@@ -88,6 +88,7 @@ image_flip(p4)
 ----
 image::https://raw.githubusercontent.com/saumyashukla2611/saumyashukla2611.github.io/master/images/7.gif[]
 
+%>% denotes piping in R
 You can also morph the images:
 ----
 p5 <- image_scale(image_read("vincent.jpg"), "x100")
