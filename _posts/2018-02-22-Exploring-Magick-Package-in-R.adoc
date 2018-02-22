@@ -67,7 +67,7 @@ image_charcoal(p3)
 ----
 image::https://raw.githubusercontent.com/saumyashukla2611/saumyashukla2611.github.io/master/images/5.PNG[]
 
-There many other options available, you can check it out from the link provided in the source section.
+There many other options available, you can check it out from the link provided in the reference section.
 
 We can use animations as well, since all functions in magick supports working with layers.
 ----
@@ -109,4 +109,8 @@ plot(AirPassengers, ylab="Passengers(1000s)", type="o", pch =20)
 grid.raster(tj,just = "bottom" , height = 0.4)
 ----
 image::https://raw.githubusercontent.com/saumyashukla2611/saumyashukla2611.github.io/master/images/9.png[]
+
+References: 
+
+https://cran.r-project.org/web/packages/magick/vignettes/intro.html
 
