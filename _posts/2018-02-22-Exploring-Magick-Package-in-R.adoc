@@ -17,6 +17,8 @@ To load the image file
 ----
 tj <- image_read('tj.jpg')
 image_info(tj)
+##   format width height colorspace matte filesize
+## 1   JPEG   480    360       sRGB FALSE    26673
 ----
 
 
