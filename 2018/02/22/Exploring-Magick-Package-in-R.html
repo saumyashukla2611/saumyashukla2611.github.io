@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Exploring Magick Package in R</title>
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="https://saumyashukla2611.github.io/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="//saumyashukla2611.github.io/themes/casper/assets/css/screen.css?v=1519339336348" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+
+    <link rel="canonical" href="https://saumyashukla2611.github.io/2018/02/22/Exploring-Magick-Package-in-R.html" />
+    <meta name="referrer" content="origin" />
+    
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Exploring Magick Package in R" />
+    <meta property="og:description" content="Looking for image transformations and changes in R? Here is your package. While reading about various packages in R, I came across this super fun package called as magick. It was published in December 2017 with version 1.6 and is a very comprehensive open source image processing library. The" />
+    <meta property="og:url" content="https://saumyashukla2611.github.io/2018/02/22/Exploring-Magick-Package-in-R.html" />
+    <meta property="article:published_time" content="2018-02-22T00:00:00.000Z" />
+    <meta property="article:tag" content="magick" />
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Exploring Magick Package in R" />
+    <meta name="twitter:description" content="Looking for image transformations and changes in R? Here is your package. While reading about various packages in R, I came across this super fun package called as magick. It was published in December 2017 with version 1.6 and is a very comprehensive open source image processing library. The" />
+    <meta name="twitter:url" content="https://saumyashukla2611.github.io/2018/02/22/Exploring-Magick-Package-in-R.html" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": {
+        "@type": "Person",
+        "name": "saumyashukla2611",
+        "image": "https://avatars1.githubusercontent.com/u/30159575?v=4",
+        "url": "https://saumyashukla2611.github.io/author/saumyashukla2611/"
+    },
+    "headline": "Exploring Magick Package in R",
+    "url": "https://saumyashukla2611.github.io/2018/02/22/Exploring-Magick-Package-in-R.html",
+    "datePublished": "2018-02-22T00:00:00.000Z",
+    "keywords": "magick",
+    "description": "Looking for image transformations and changes in R? Here is your package. While reading about various packages in R, I came across this super fun package called as magick. It was published in December 2017 with version 1.6 and is a very comprehensive open source image processing library. The"
+}
+    </script>
+
+    <meta name="generator" content="HubPress" />
+    <link rel="alternate" type="application/rss+xml" title="" href="https://saumyashukla2611.github.io/rss/" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/styles/atom-one-dark.min.css">
+    
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+</head>
+<body class="post-template tag-magick nav-closed">
+
+    
+
+    <div class="site-wrapper">
+
+        
+
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post tag-magick">
+
+        <header class="post-header">
+            <h1 class="post-title">Exploring Magick Package in R</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2018-02-22">22 February 2018</time>  on <a href="https://saumyashukla2611.github.io/tag/magick/">magick</a>
+            </section>
+        </header>
+
+        <section class="post-content">
+            <div class="paragraph">
+<p>Looking for image transformations and changes in R? Here is your package.</p>
+</div>
+<div class="paragraph">
+<p>While reading about various packages in R, I came across this super fun package called as magick. It was published in December 2017 with version 1.6 and is a very comprehensive open source image processing library. The package supports various file formats and handlings. Well, the use of this package depends upon the user but I am planning to implement this in my Rshiny application.</p>
+</div>
+<div class="paragraph">
+<p>To Install and load the package in R:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>install.packages("magick", repos = "http://cran.us.r-project.org/bin/windows/contrib/3.3/magick_1.6.zip")
+library(magick)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>I have a set a working directory, where I have saved all the images I am going to use for this demo. You can easily set it inside R studio: Session &#8594; Set Working Directory. After this, there is no need of giving absolute path.</p>
+</div>
+<div class="paragraph">
+<p>To load the image file</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>tj &lt;- image_read('tj.jpg')
+image_info(tj)
+##   format width height colorspace matte filesize
+## 1   JPEG   480    360       sRGB FALSE    26673</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can use image_display to see the image but its only available to preview the image in an X11 window.</p>
+</div>
+<div class="paragraph">
+<p>There are many transformation options available with this package which makes your task easier of not using another tool to crop, modify, scale or even change coloring in the image. I have taken image examples from my favorite childhood cartoon series, Recess..lol.. lets see the transformation options.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>p1 &lt;- image_read("tj.jpg")
+print(p1)
+##   format width height colorspace matte filesize
+## 1   JPEG   480    360       sRGB FALSE    26673</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://raw.githubusercontent.com/saumyashukla2611/saumyashukla2611.github.io/master/images/1.PNG" alt="1.PNG">
+</div>
+</div>
+<div class="paragraph">
+<p>Well, I think TJ would look smarter with the border around the image.. what say?</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>image_border(image_background(tj, "orange"), "#FFA500", "10x10")</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://raw.githubusercontent.com/saumyashukla2611/saumyashukla2611.github.io/master/images/2.PNG" alt="2.PNG">
+</div>
+</div>
+<div class="paragraph">
+<p>Use can include any color with the color code, also it provides flexibility to change border dimensions.</p>
+</div>
+<div class="paragraph">
+<p>Well, how about some text in the image? I can generate my own memes in R you see..</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>image_annotate(tj, "WHY ME??", size = 40, color = "ORANGE", boxcolor = "BLACK",
+degrees = 40, location = "+22+20")</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://raw.githubusercontent.com/saumyashukla2611/saumyashukla2611.github.io/master/images/3.PNG" alt="3.PNG">
+</div>
+</div>
+<div class="paragraph">
+<p>You can change the degrees upto which you want to rotate the image of the text, the positioning of the text could be changed. +22 refers from the left end side position and +20 from the right hand side.</p>
+</div>
+<div class="paragraph">
+<p>Well, hey Spinelli, why so blurrrr?</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>p2 &lt;- image_read("spinelli.jpg")
+image_blur(p2,10,5)</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://raw.githubusercontent.com/saumyashukla2611/saumyashukla2611.github.io/master/images/4.PNG" alt="4.PNG">
+</div>
+</div>
+<div class="paragraph">
+<p>Here, 10 represents radius and 5 represents sigma value.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>p3 &lt;- image_read("recess_gus.jpg")
+image_charcoal(p3)</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://raw.githubusercontent.com/saumyashukla2611/saumyashukla2611.github.io/master/images/5.PNG" alt="5.PNG">
+</div>
+</div>
+<div class="paragraph">
+<p>There many other options available, you can check it out from the link provided in the reference section.</p>
+</div>
+<div class="paragraph">
+<p>We can use animations as well, since all functions in magick supports working with layers.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>p4 &lt;- image_read("Mikey.gif") %&gt;%
+  image_scale("300x") %&gt;%
+  image_quantize(256)
+print(p4)
+##   format width height colorspace matte filesize
+## 1    GIF   300    220       sRGB  TRUE        0
+## 2    GIF   300    220       sRGB  TRUE        0
+## 3    GIF   300    221       sRGB  TRUE        0
+## 4    GIF   300    220       sRGB  TRUE        0
+## 5    GIF   300    223       sRGB  TRUE        0</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://raw.githubusercontent.com/saumyashukla2611/saumyashukla2611.github.io/master/images/6.gif" alt="6.gif">
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>image_flip(p4)</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://raw.githubusercontent.com/saumyashukla2611/saumyashukla2611.github.io/master/images/7.gif" alt="7.gif">
+</div>
+</div>
+<div class="paragraph">
+<p>%&gt;% denotes piping in R</p>
+</div>
+<div class="paragraph">
+<p>You can also morph the images:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>p5 &lt;- image_scale(image_read("vincent.jpg"), "x100")
+p6 &lt;- image_scale(image_read("gretchen.jpg"), "x100")
+frame &lt;- image_morph(c(p5, p6), frames = 10)
+image_animate(frame)</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://raw.githubusercontent.com/saumyashukla2611/saumyashukla2611.github.io/master/images/8.gif" alt="8.gif">
+</div>
+</div>
+<div class="paragraph">
+<p>fun..right??</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>library(datasets)
+library(ggplot2)
+library(grid)
+data("AirPassengers")
+plot(AirPassengers, ylab="Passengers(1000s)", type="o", pch =20)
+grid.raster(tj,just = "bottom" , height = 0.4)</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://raw.githubusercontent.com/saumyashukla2611/saumyashukla2611.github.io/master/images/9.png" alt="9.png">
+</div>
+</div>
+<div class="paragraph">
+<p>References:</p>
+</div>
+<div class="paragraph">
+<p><a href="https://cran.r-project.org/web/packages/magick/vignettes/intro.html" class="bare">https://cran.r-project.org/web/packages/magick/vignettes/intro.html</a></p>
+</div>
+        </section>
+
+        <footer class="post-footer">
+
+
+            <figure class="author-image">
+                <a class="img" href="https://saumyashukla2611.github.io/author/saumyashukla2611/" style="background-image: url(https://avatars1.githubusercontent.com/u/30159575?v&#x3D;4)"><span class="hidden">saumyashukla2611's Picture</span></a>
+            </figure>
+
+            <section class="author">
+                <h4><a href="https://saumyashukla2611.github.io/author/saumyashukla2611/">saumyashukla2611</a></h4>
+
+                    <p>Read <a href="https://saumyashukla2611.github.io/author/saumyashukla2611/">more posts</a> by this author.</p>
+                <div class="author-meta">
+                    
+                    
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="https://twitter.com/intent/tweet?text=Exploring%20Magick%20Package%20in%20R&amp;url=https://saumyashukla2611.github.io/2018/02/22/Exploring-Magick-Package-in-R.html"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://saumyashukla2611.github.io/2018/02/22/Exploring-Magick-Package-in-R.html"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=https://saumyashukla2611.github.io/2018/02/22/Exploring-Magick-Package-in-R.html"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+        </footer>
+
+
+    </article>
+
+</main>
+
+<aside class="read-next">
+</aside>
+
+
+
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="https://saumyashukla2611.github.io"></a> &copy; 2018</section>
+            <section class="poweredby">Proudly published with <a href="http://hubpress.io">HubPress</a></section>
+        </footer>
+
+    </div>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js?v="></script> <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.min.js?v="></script> <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js?v="></script> 
+      <script type="text/javascript">
+        jQuery( document ).ready(function() {
+          // change date with ago
+          jQuery('ago.ago').each(function(){
+            var element = jQuery(this).parent();
+            element.html( moment(element.text()).fromNow());
+          });
+        });
+
+        hljs.initHighlightingOnLoad();
+      </script>
+
+    <script type="text/javascript" src="//saumyashukla2611.github.io/themes/casper/assets/js/jquery.fitvids.js?v=1519339336348"></script>
+    <script type="text/javascript" src="//saumyashukla2611.github.io/themes/casper/assets/js/index.js?v=1519339336348"></script>
+
+</body>
+</html>

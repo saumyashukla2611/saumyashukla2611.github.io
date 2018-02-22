@@ -1,4 +1,190 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[Untitled RSS Feed]]></description><link>https://saumyashukla2611.github.io</link><generator>RSS for Node</generator><lastBuildDate>Sat, 03 Feb 2018 23:06:08 GMT</lastBuildDate><atom:link href="https://saumyashukla2611.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Contact List using just CSS]]></title><description><![CDATA[<div class="paragraph">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[Untitled RSS Feed]]></description><link>https://saumyashukla2611.github.io</link><generator>RSS for Node</generator><lastBuildDate>Thu, 22 Feb 2018 22:42:16 GMT</lastBuildDate><atom:link href="https://saumyashukla2611.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Exploring Magick Package in R]]></title><description><![CDATA[<div class="paragraph">
+<p>Looking for image transformations and changes in R? Here is your package.</p>
+</div>
+<div class="paragraph">
+<p>While reading about various packages in R, I came across this super fun package called as magick. It was published in December 2017 with version 1.6 and is a very comprehensive open source image processing library. The package supports various file formats and handlings. Well, the use of this package depends upon the user but I am planning to implement this in my Rshiny application.</p>
+</div>
+<div class="paragraph">
+<p>To Install and load the package in R:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>install.packages("magick", repos = "http://cran.us.r-project.org/bin/windows/contrib/3.3/magick_1.6.zip")
+library(magick)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>I have a set a working directory, where I have saved all the images I am going to use for this demo. You can easily set it inside R studio: Session &#8594; Set Working Directory. After this, there is no need of giving absolute path.</p>
+</div>
+<div class="paragraph">
+<p>To load the image file</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>tj &lt;- image_read('tj.jpg')
+image_info(tj)
+##   format width height colorspace matte filesize
+## 1   JPEG   480    360       sRGB FALSE    26673</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can use image_display to see the image but its only available to preview the image in an X11 window.</p>
+</div>
+<div class="paragraph">
+<p>There are many transformation options available with this package which makes your task easier of not using another tool to crop, modify, scale or even change coloring in the image. I have taken image examples from my favorite childhood cartoon series, Recess..lol.. lets see the transformation options.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>p1 &lt;- image_read("tj.jpg")
+print(p1)
+##   format width height colorspace matte filesize
+## 1   JPEG   480    360       sRGB FALSE    26673</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://raw.githubusercontent.com/saumyashukla2611/saumyashukla2611.github.io/master/images/1.PNG" alt="1.PNG">
+</div>
+</div>
+<div class="paragraph">
+<p>Well, I think TJ would look smarter with the border around the image.. what say?</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>image_border(image_background(tj, "orange"), "#FFA500", "10x10")</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://raw.githubusercontent.com/saumyashukla2611/saumyashukla2611.github.io/master/images/2.PNG" alt="2.PNG">
+</div>
+</div>
+<div class="paragraph">
+<p>Use can include any color with the color code, also it provides flexibility to change border dimensions.</p>
+</div>
+<div class="paragraph">
+<p>Well, how about some text in the image? I can generate my own memes in R you see..</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>image_annotate(tj, "WHY ME??", size = 40, color = "ORANGE", boxcolor = "BLACK",
+degrees = 40, location = "+22+20")</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://raw.githubusercontent.com/saumyashukla2611/saumyashukla2611.github.io/master/images/3.PNG" alt="3.PNG">
+</div>
+</div>
+<div class="paragraph">
+<p>You can change the degrees upto which you want to rotate the image of the text, the positioning of the text could be changed. +22 refers from the left end side position and +20 from the right hand side.</p>
+</div>
+<div class="paragraph">
+<p>Well, hey Spinelli, why so blurrrr?</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>p2 &lt;- image_read("spinelli.jpg")
+image_blur(p2,10,5)</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://raw.githubusercontent.com/saumyashukla2611/saumyashukla2611.github.io/master/images/4.PNG" alt="4.PNG">
+</div>
+</div>
+<div class="paragraph">
+<p>Here, 10 represents radius and 5 represents sigma value.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>p3 &lt;- image_read("recess_gus.jpg")
+image_charcoal(p3)</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://raw.githubusercontent.com/saumyashukla2611/saumyashukla2611.github.io/master/images/5.PNG" alt="5.PNG">
+</div>
+</div>
+<div class="paragraph">
+<p>There many other options available, you can check it out from the link provided in the reference section.</p>
+</div>
+<div class="paragraph">
+<p>We can use animations as well, since all functions in magick supports working with layers.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>p4 &lt;- image_read("Mikey.gif") %&gt;%
+  image_scale("300x") %&gt;%
+  image_quantize(256)
+print(p4)
+##   format width height colorspace matte filesize
+## 1    GIF   300    220       sRGB  TRUE        0
+## 2    GIF   300    220       sRGB  TRUE        0
+## 3    GIF   300    221       sRGB  TRUE        0
+## 4    GIF   300    220       sRGB  TRUE        0
+## 5    GIF   300    223       sRGB  TRUE        0</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://raw.githubusercontent.com/saumyashukla2611/saumyashukla2611.github.io/master/images/6.gif" alt="6.gif">
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>image_flip(p4)</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://raw.githubusercontent.com/saumyashukla2611/saumyashukla2611.github.io/master/images/7.gif" alt="7.gif">
+</div>
+</div>
+<div class="paragraph">
+<p>%&gt;% denotes piping in R</p>
+</div>
+<div class="paragraph">
+<p>You can also morph the images:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>p5 &lt;- image_scale(image_read("vincent.jpg"), "x100")
+p6 &lt;- image_scale(image_read("gretchen.jpg"), "x100")
+frame &lt;- image_morph(c(p5, p6), frames = 10)
+image_animate(frame)</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://raw.githubusercontent.com/saumyashukla2611/saumyashukla2611.github.io/master/images/8.gif" alt="8.gif">
+</div>
+</div>
+<div class="paragraph">
+<p>fun..right??</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>library(datasets)
+library(ggplot2)
+library(grid)
+data("AirPassengers")
+plot(AirPassengers, ylab="Passengers(1000s)", type="o", pch =20)
+grid.raster(tj,just = "bottom" , height = 0.4)</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://raw.githubusercontent.com/saumyashukla2611/saumyashukla2611.github.io/master/images/9.png" alt="9.png">
+</div>
+</div>
+<div class="paragraph">
+<p>References:</p>
+</div>
+<div class="paragraph">
+<p><a href="https://cran.r-project.org/web/packages/magick/vignettes/intro.html" class="bare">https://cran.r-project.org/web/packages/magick/vignettes/intro.html</a></p>
+</div>]]></description><link>https://saumyashukla2611.github.io/2018/02/22/Exploring-Magick-Package-in-R.html</link><guid isPermaLink="true">https://saumyashukla2611.github.io/2018/02/22/Exploring-Magick-Package-in-R.html</guid><category><![CDATA[magick]]></category><pubDate>Thu, 22 Feb 2018 00:00:00 GMT</pubDate></item><item><title><![CDATA[Contact List using just CSS]]></title><description><![CDATA[<div class="paragraph">
 <p>HTML/CSS seems to be easy languages but when you start drowning in its Deep Ocean, precision and accuracy are the lifeguards. With this simple code pen, I have learned many lessons. This article is based on one of the most simple but effective property, position: sticky.</p>
 </div>
 <p data-height="265" data-theme-id="0" data-slug-hash="eVJrGa" data-default-tab="css,result" data-user="GirlWhoCodes26" data-embed-version="2" data-pen-title="eVJrGa" class="codepen">See the Pen <a href="https://codepen.io/GirlWhoCodes26/pen/eVJrGa/">eVJrGa</a> by Saumya Shukla (<a href="https://codepen.io/GirlWhoCodes26">@GirlWhoCodes26</a>) on <a href="https://codepen.io">CodePen</a>.</p>
