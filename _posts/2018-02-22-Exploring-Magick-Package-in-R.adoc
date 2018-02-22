@@ -11,7 +11,7 @@ To Install and load the package in R:
 install.packages("magick", repos = "http://cran.us.r-project.org/bin/windows/contrib/3.3/magick_1.6.zip")
 library(magick)
 ----
-I have a set a working directory, where I have saved all the images I am going to use for this demo. You can easily set it inside R: Session -> Set Working Directory. After this, there is no need of giving absolute path.
+I have a set a working directory, where I have saved all the images I am going to use for this demo. You can easily set it inside R studio: Session -> Set Working Directory. After this, there is no need of giving absolute path.
 
 To load the image file
 ----
