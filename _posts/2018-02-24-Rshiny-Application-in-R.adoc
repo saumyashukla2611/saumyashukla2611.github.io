@@ -102,5 +102,6 @@ The output of the above ui.r and server.r files will generate the following outp
 You can visit the following link to perform the changes on your own.
 
 References:
+
 https://shiny.rstudio.com/reference/shiny/1.0.5/
 https://shiny.rstudio.com/articles/app-formats.html
