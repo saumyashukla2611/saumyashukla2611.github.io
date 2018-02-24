@@ -92,20 +92,23 @@ The above code contains the basic component for the `server.r` file. You can def
 ```R
 library(RShiny)
 ShinyServer(function(input,output) {
-output$distPlot <- renderPlot({
-
-dist <- rnorm(input$obs)
-hist(dist)
-})
+  output$distPlot <- renderPlot({
+    dist <- rnorm(input$obs)
+    hist(dist)
+  })
 })
 ```
-Render is a family of functions which are reactive in nature means the output changes with the change in input dynamically. Here, we are plotting a graph so I have used renderPlot(). You can use other functions as per your output requirements using the following link: https://shiny.rstudio.com/reference/shiny/1.0.5/ 
 
-So prior to Rshiny version 0.10, we used the above approach of calling ShinyUI() and ShinyServer() functions in ui.r and server.r files respectively. But from Rshiny version 0.10, there is no more need to call these functions seperately in two different files. We can use a single file to call a single function, ShinyApp() inside App.R file.
+`render` is a family of functions which are reactive in nature. This means that the output changes with the change in input. In order to plot a graph, we will use the function `renderPlot()`. 
 
-APP.R
+You can find the other `render` functions using the following link: https://shiny.rstudio.com/reference/shiny/1.0.5/ 
+
+So prior to RShiny version 0.10, there was a need to call `ShinyUI()` and `ShinyServer()` functions in `ui.r` and `server.r` files respectively. But from RShiny version 0.10, there is no more need to call these functions seperately in two different files anymore. We can use a single file to call a single function, `ShinyApp()` inside `App.R` file.
+
 
 ```R
+# filename: App.R
+
 server <- function(input, output) {
   
 }
@@ -114,7 +117,7 @@ ui <- fluidPage(
   sidebarLayout(
     sidebarPanel(),
     mainPanel()
-  )
+    )
 )
 shinyApp(ui = ui, server = server)
 ```
