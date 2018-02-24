@@ -95,7 +95,7 @@ ui <- fluidPage(
 shinyApp(ui = ui, server = server)
 ```
 
-server and ui will function the same as described above. ShinyApp() here knits the ui and server functions together.
+server and ui will function in the above code will be the same as described in the start of the blog. ShinyApp() here knits the ui and server functions together.
 
 The output of the above ui.r and server.r files will generate the following output. 
 ##have to include a SS
