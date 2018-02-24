@@ -133,9 +133,8 @@ shinyApp(ui = ui, server = server)
 
 The `server` and `ui` will work the same as described in the start of this blog. `ShinyApp()` knits the `ui` and `server` functions together.
 
+## References
 
+[1] https://shiny.rstudio.com/reference/shiny/1.0.5/
 
-References:
-
-https://shiny.rstudio.com/reference/shiny/1.0.5/
-https://shiny.rstudio.com/articles/app-formats.html
+[2] https://shiny.rstudio.com/articles/app-formats.html
