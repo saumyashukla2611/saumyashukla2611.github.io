@@ -1,0 +1,107 @@
+= Rshiny Application in R
+
+Rshiny is a package from RStudio to build interactive web applications in R. With interactive here means that one can change the input values on the web page and can view the output generated with that input on the web page at the same instance. There is no need to reload the web page for changes to appear. This package completely eliminates the need to use HTML,CSS,Javascript for building a web application.
+
+ShinyApp consists of two components:
+- ui.r file
+- server.r file
+
+ui.r file: This file contains the user interface object. You can define the 
+inputs for the web application in this file. Following are the basic components for this file:
+
+```R
+library(RShiny)
+shinyUI(fluidpage())
+```
+
+In the above code, through first line we are loading RShiny library. The ShinyUI() function build the UI object for the web application. In RShiny, you can have function inside a function. Inside ShinyUI() function, you can have various functions for laying out the user interface. I am using a fluidpage() for this blog which creates a fluid layout which we will see further but you can use various other functions from this link : https://shiny.rstudio.com/reference/shiny/1.0.5/
+
+UI.R
+
+```R
+library(RShiny)
+shinyUI(fluidPage(
+
+  titlePanel("Hello, Welcome to a Rshiny Web Application!!"),
+
+  sidebarLayout(
+    sidebarPanel(
+      sliderInput("obs", "Number of observations:",  
+                  min = 1, max = 1000, value = 400) #to create a slider on the sidebar. "obs" is an id for the slider component, "Number of observations:" is the title for the slider. 1 is the min and 1000 being the max value on the slider. By default, slider would be set on 400.
+    ),
+
+    mainPanel(
+      plotOutput("distPlot") #to print the plot's output where output variable is distPlot.
+    )
+  )
+))
+```
+Inside fluidPage() function, you can see three components:
+-titlePanel
+-sidebarLayout
+-mainPanel
+
+1) TitlePanel includes the title of the webpage.
+2) SidebarPanel includes the components on the sidebar. By default, the position is left for the sidebar but you can change it towards the right with following line of code:
+```R
+sidebarLayout(position = "right",
+              
+  sidebarPanel(
+  ),
+  mainPanel(
+  )
+)
+```
+3) MainPanel includes the center section of the webpage where we can print/display our output. In this example, we will display a histogram.
+
+Next File comes into play is server.r where we define the computational aspect.
+
+SERVER.R
+```R
+library(RShiny)
+ShinyServer(function(input,output) {
+
+})
+```
+The above code contains the basic component for the server.r file. You can define the output to be generated inside this ShinyServer() function. I am going to plot a histogram for randomly generated numbers using rnorm() function.
+
+```R
+library(RShiny)
+ShinyServer(function(input,output) {
+output$distPlot <- renderPlot({
+
+dist <- rnorm(input$obs)
+hist(dist)
+})
+})
+```
+Render is a family of functions which are reactive in nature means the output changes with the change in input dynamically. Here, we are plotting a graph so I have used renderPlot(). You can use other functions as per your output requirements using the following link: https://shiny.rstudio.com/reference/shiny/1.0.5/ 
+
+So prior to Rshiny version 0.10, we used the above approach of calling ShinyUI() and ShinyServer() functions in ui.r and server.r files respectively. But from Rshiny version 0.10, there is no more need to call these functions seperately in two different files. We can use a single file to call a single function, ShinyApp() inside App.R file.
+
+APP.R
+
+```R
+server <- function(input, output) {
+  
+}
+
+ui <- fluidPage(
+  sidebarLayout(
+    sidebarPanel(),
+    mainPanel()
+  )
+)
+shinyApp(ui = ui, server = server)
+```
+
+server and ui will function in the above code will be the same as described in the start of the blog. ShinyApp() here knits the ui and server functions together.
+
+The output of the above ui.r and server.r files will generate the following output. 
+##have to include a SS
+You can visit the following link to perform the changes on your own.
+
+References:
+
+https://shiny.rstudio.com/reference/shiny/1.0.5/
+https://shiny.rstudio.com/articles/app-formats.html
