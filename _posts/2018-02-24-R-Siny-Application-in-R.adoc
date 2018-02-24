@@ -1,12 +1,14 @@
-= Rshiny Application in R
+= RShiny Application in R
 
-Rshiny is a package from RStudio to build interactive web applications in R. With interactive here means that one can change the input values on the web page and can view the output generated with that input on the web page at the same instance. There is no need to reload the web page for changes to appear. This package completely eliminates the need to use HTML,CSS,Javascript for building a web application.
+RShiny is a package from RStudio to build interactive web applications in __R__. With interactive here means that one can change the input values on the web page and can view the output generated with that input on the web page at the same instance. There is no need to reload the web page for changes to appear. This package completely eliminates the need to use HTML,CSS,Javascript for building a web application.
 
 ShinyApp consists of two components:
+
 - ui.r file
 - server.r file
 
-ui.r file: This file contains the user interface object. You can define the 
+#### ui.r file
+This file contains the user interface object. You can define the 
 inputs for the web application in this file. Following are the basic components for this file:
 
 ```R
@@ -14,56 +16,78 @@ library(RShiny)
 shinyUI(fluidpage())
 ```
 
-In the above code, through first line we are loading RShiny library. The ShinyUI() function build the UI object for the web application. In RShiny, you can have function inside a function. Inside ShinyUI() function, you can have various functions for laying out the user interface. I am using a fluidpage() for this blog which creates a fluid layout which we will see further but you can use various other functions from this link : https://shiny.rstudio.com/reference/shiny/1.0.5/
+In the above code, the first line loads the RShiny library. The `ShinyUI()` function builds the UI object for the web application. In RShiny, you can have function inside a function. Inside `ShinyUI()` function, you can have various functions for laying out the user interface. 
 
-UI.R
+I am also using `fluidpage()` function as a parameter for `ShinyUI()` to create a fluid layout which we will see in the below sections.
+
+If you want to see other functions, feel free to use the below link : https://shiny.rstudio.com/reference/shiny/1.0.5/
+
 
 ```R
+# filename: ui.r
+
 library(RShiny)
 shinyUI(fluidPage(
 
   titlePanel("Hello, Welcome to a Rshiny Web Application!!"),
-
+  
+  # sliderInput
+  # builds a slider in the sidebar
+  # @param "obs" input variable name
+  # @param "Number of observations:" Slider title
+  # @param min = 1 min slider value
+  # @param max = 100 max slider value
+  # @param value = 500 By default selected value
   sidebarLayout(
     sidebarPanel(
       sliderInput("obs", "Number of observations:",  
-                  min = 1, max = 1000, value = 400) #to create a slider on the sidebar. "obs" is an id for the slider component, "Number of observations:" is the title for the slider. 1 is the min and 1000 being the max value on the slider. By default, slider would be set on 400.
+                  min = 1, max = 1000, value = 500) 
     ),
 
     mainPanel(
-      plotOutput("distPlot") #to print the plot's output where output variable is distPlot.
+      plotOutput("distPlot") 
+      # to print the plot's output where 
+      # output variable is distPlot.
     )
   )
 ))
 ```
-Inside fluidPage() function, you can see three components:
--titlePanel
--sidebarLayout
--mainPanel
 
-1) TitlePanel includes the title of the webpage.
-2) SidebarPanel includes the components on the sidebar. By default, the position is left for the sidebar but you can change it towards the right with following line of code:
+Inside `fluidPage()` function, you can see three components:
+
+- titlePanel
+- sidebarLayout
+- mainPanel
+
+1) `titlePanel` includes the title of the webpage.
+
+2) `sidebarPanel` includes the components on the sidebar. By default, sidebar is on the left-hand side, but you can move it towards the right with the help of the following code:
+
 ```R
-sidebarLayout(position = "right",
-              
+sidebarLayout(position = "right",            
   sidebarPanel(
   ),
   mainPanel(
   )
 )
 ```
-3) MainPanel includes the center section of the webpage where we can print/display our output. In this example, we will display a histogram.
 
-Next File comes into play is server.r where we define the computational aspect.
+3) `mainPanel` includes the center section of the webpage where we can print/display our output. 
 
-SERVER.R
+#### server.r file
+
+`server.r` is the file that is responsible for the computational part of the RShiny App.
+
 ```R
+# filename: server.r
+
 library(RShiny)
 ShinyServer(function(input,output) {
 
 })
 ```
-The above code contains the basic component for the server.r file. You can define the output to be generated inside this ShinyServer() function. I am going to plot a histogram for randomly generated numbers using rnorm() function.
+
+The above code contains the basic component for the `server.r` file. You can define the output to be generated inside this `ShinyServer()` function. I am going to plot a histogram for randomly generated numbers using `rnorm()` function.
 
 ```R
 library(RShiny)
