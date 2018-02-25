@@ -1,4 +1,5 @@
 = RShiny Application in R
+:hp-tags: Rshiny
 
 RShiny is a package from RStudio to build interactive web applications in __R__. With interactive here means that one can change the input values on the web page and can view the output generated with that input on the web page at the same instance. There is no need to reload the web page for changes to appear. This package completely eliminates the need to use HTML,CSS,Javascript for building a web application.
 
