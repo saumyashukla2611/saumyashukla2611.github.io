@@ -1,4 +1,204 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[Untitled RSS Feed]]></description><link>https://saumyashukla2611.github.io</link><generator>RSS for Node</generator><lastBuildDate>Thu, 22 Feb 2018 22:42:16 GMT</lastBuildDate><atom:link href="https://saumyashukla2611.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Exploring Magick Package in R]]></title><description><![CDATA[<div class="paragraph">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[Untitled RSS Feed]]></description><link>https://saumyashukla2611.github.io</link><generator>RSS for Node</generator><lastBuildDate>Sun, 25 Feb 2018 03:08:31 GMT</lastBuildDate><atom:link href="https://saumyashukla2611.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[RShiny Application in R]]></title><description><![CDATA[<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>RShiny is a package from RStudio to build interactive web applications in <em>R</em>. With interactive here means that one can change the input values on the web page and can view the output generated with that input on the web page at the same instance. There is no need to reload the web page for changes to appear. This package completely eliminates the need to use HTML,CSS,Javascript for building a web application.</p>
+</div>
+<div class="paragraph">
+<p>shinyApp consists of two components:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>ui.r file</p>
+</li>
+<li>
+<p>server.r file</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_ui_r_file">ui.r file</h4>
+<div class="paragraph">
+<p>This file contains the user interface object. You can define the
+inputs for the web application in this file. Following are the basic components for this file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-R" data-lang="R">library(shiny)
+shinyUI(fluidpage())</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the above code, the first line loads the shiny library. The <code>ShinyUI()</code> function builds the UI object for the web application. In shiny, you can have function inside a function. Inside <code>ShinyUI()</code> function, you can have various functions for laying out the user interface.</p>
+</div>
+<div class="paragraph">
+<p>I am also using <code>fluidpage()</code> function as a parameter for <code>ShinyUI()</code> to create a fluid layout which we will see in the below sections.</p>
+</div>
+<div class="paragraph">
+<p>If you want to see other functions, feel free to use the below link : <a href="https://shiny.rstudio.com/reference/shiny/1.0.5/" class="bare">https://shiny.rstudio.com/reference/shiny/1.0.5/</a></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-R" data-lang="R"># filename: ui.r
+
+library(shiny)
+shinyUI(fluidPage(
+
+  titlePanel("Hello, Welcome to a Rshiny Web Application!!"),
+
+  # sliderInput
+  # builds a slider in the sidebar
+  # @param "obs" input variable name
+  # @param "Number of observations:" Slider title
+  # @param min = 1 min slider value
+  # @param max = 100 max slider value
+  # @param value = 500 By default selected value
+  sidebarLayout(
+    sidebarPanel(
+      sliderInput("obs", "Number of observations:",
+                  min = 1, max = 1000, value = 500)
+    ),
+
+    mainPanel(
+      plotOutput("distPlot")
+      # to print the plot's output where
+      # output variable is distPlot.
+    )
+  )
+))</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Inside <code>fluidPage()</code> function, you can see three components:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>titlePanel</p>
+</li>
+<li>
+<p>sidebarLayout</p>
+</li>
+<li>
+<p>mainPanel</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>1) <code>titlePanel</code> includes the title of the webpage.</p>
+</div>
+<div class="paragraph">
+<p>2) <code>sidebarPanel</code> includes the components on the sidebar. By default, sidebar is on the left-hand side, but you can move it towards the right with the help of the following code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-R" data-lang="R">sidebarLayout(position = "right",
+  sidebarPanel(
+  ),
+  mainPanel(
+  )
+)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>3) <code>mainPanel</code> includes the center section of the webpage where we can print/display our output.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_server_r_file">server.r file</h4>
+<div class="paragraph">
+<p><code>server.r</code> is the file that is responsible for the computational part of the RShiny App.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-R" data-lang="R"># filename: server.r
+
+library(sshiny)
+shinyServer(function(input,output) {
+
+})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The above code contains the basic component for the <code>server.r</code> file. You can define the output to be generated inside this <code>shinyServer()</code> function. I am going to plot a histogram for randomly generated numbers using <code>rnorm()</code> function.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-R" data-lang="R"># filename: server.r
+
+library(shiny)
+shinyServer(function(input,output) {
+  output$distPlot &lt;- renderPlot({
+    dist &lt;- rnorm(input$obs)
+    hist(dist)
+  })
+})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>render</code> is a family of functions which are reactive in nature. This means that the output changes with the change in input. In order to plot a graph, we will use the function <code>renderPlot()</code>.</p>
+</div>
+<div class="paragraph">
+<p>You can find the other <code>render</code> functions using the following link: <a href="https://shiny.rstudio.com/reference/shiny/1.0.5/" class="bare">https://shiny.rstudio.com/reference/shiny/1.0.5/</a></p>
+</div>
+<div class="paragraph">
+<p>The histogram generated by the above code is as follows:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://raw.githubusercontent.com/saumyashukla2611/saumyashukla2611.github.io/master/images/rshiny.JPG" alt="rshiny.JPG">
+</div>
+</div>
+<div class="paragraph">
+<p>You can view the working of the web application from the following video:</p>
+</div>
+<div class="videoblock">
+<div class="content">
+<video src="https://raw.githubusercontent.com/saumyashukla2611/saumyashukla2611.github.io/master/rshiny.mp4" controls>
+Your browser does not support the video tag.
+</video>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_app_r">App.r</h4>
+<div class="paragraph">
+<p>So prior to RShiny version 0.10, there was a need to call <code>shinyUI()</code> and <code>shinyServer()</code> functions in <code>ui.r</code> and <code>server.r</code> files respectively. But from RShiny version 0.10, there is no more need to call these functions seperately in two different files. We can use a single file,<code>App.r</code> to perform both the operation inside a single function called <code>shinyApp()</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-R" data-lang="R"># filename: App.r
+
+server &lt;- function(input, output) {
+
+}
+
+ui &lt;- fluidPage(
+  sidebarLayout(
+    sidebarPanel(),
+    mainPanel()
+    )
+)
+shinyApp(ui = ui, server = server)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>server</code> and <code>ui</code> will work the same as described in the start of this blog. <code>shinyApp()</code> knits the <code>ui</code> and <code>server</code> functions together.</p>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references">References</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>[1] <a href="https://shiny.rstudio.com/reference/shiny/1.0.5/" class="bare">https://shiny.rstudio.com/reference/shiny/1.0.5/</a></p>
+</div>
+<div class="paragraph">
+<p>[2] <a href="https://shiny.rstudio.com/articles/app-formats.html" class="bare">https://shiny.rstudio.com/articles/app-formats.html</a></p>
+</div>
+</div>
+</div>]]></description><link>https://saumyashukla2611.github.io/2018/02/24/R-Siny-Application-in-R.html</link><guid isPermaLink="true">https://saumyashukla2611.github.io/2018/02/24/R-Siny-Application-in-R.html</guid><category><![CDATA[Rshiny]]></category><pubDate>Sat, 24 Feb 2018 00:00:00 GMT</pubDate></item><item><title><![CDATA[Exploring Magick Package in R]]></title><description><![CDATA[<div class="paragraph">
 <p>Looking for image transformations and changes in R? Here is your package.</p>
 </div>
 <div class="paragraph">
