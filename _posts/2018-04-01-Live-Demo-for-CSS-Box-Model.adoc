@@ -2,7 +2,7 @@
 
 Box Model provides us the layout of a web page. A rectangular box represents every HTML element here. Words such as padding, border, margin sound naïve and familiar but from a front-end developer’s perspective they hold much more importance. Through this article, I am shadowing upon the use of these words as a property in box model.
 
-Below is the structure of the CSS Box Model, you can use the buttons in the live demo for each layer step-by -step to understand the model more clearly.
+Below is the structure of the CSS Box Model, you can use the buttons in the demo for each layer to understand the model and changes associated with it more clearly.
 
 image::https://raw.githubusercontent.com/saumyashukla2611/saumyashukla2611.github.io/master/images/boxmodelfinal.JPG[]
 
