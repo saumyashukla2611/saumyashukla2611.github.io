@@ -12,3 +12,4 @@ image::https://raw.githubusercontent.com/saumyashukla2611/saumyashukla2611.githu
 <p data-height="542" data-theme-id="0" data-slug-hash="WzzgMd" data-default-tab="result" data-user="GirlWhoCodes26" data-embed-version="2" data-pen-title="CSS Box Model" class="codepen">See the Pen <a href="https://codepen.io/GirlWhoCodes26/pen/WzzgMd/">CSS Box Model</a> by Saumya Shukla (<a href="https://codepen.io/GirlWhoCodes26">@GirlWhoCodes26</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 ++++
+To understand the code, feel free to refer to the HTML,CSS,JS tabs in the demo.
