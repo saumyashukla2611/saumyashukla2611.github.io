@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Saumya  Shukla]]></title><description><![CDATA[Data Enthusiast  | Self-learner | Tech Savvy]]></description><link>https://saumyashukla2611.github.io</link><generator>RSS for Node</generator><lastBuildDate>Sun, 01 Apr 2018 20:16:36 GMT</lastBuildDate><atom:link href="https://saumyashukla2611.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Live Demo for CSS Box Model]]></title><description><![CDATA[<div id="preamble">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Saumya  Shukla]]></title><description><![CDATA[Data Enthusiast  | Self-learner | Tech Savvy]]></description><link>https://saumyashukla2611.github.io</link><generator>RSS for Node</generator><lastBuildDate>Sun, 01 Apr 2018 20:21:00 GMT</lastBuildDate><atom:link href="https://saumyashukla2611.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Live Demo for CSS Box Model]]></title><description><![CDATA[<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>Box Model provides us the layout of a web page. A rectangular box represents every HTML element here. Words such as padding, border, margin sound naïve and familiar but from a front-end developer’s perspective they hold much more importance. Through this article, I am shadowing upon the use of these words as a property in box model.</p>
@@ -18,7 +18,7 @@
 <p data-height="542" data-theme-id="0" data-slug-hash="WzzgMd" data-default-tab="result" data-user="GirlWhoCodes26" data-embed-version="2" data-pen-title="CSS Box Model" class="codepen">See the Pen <a href="https://codepen.io/GirlWhoCodes26/pen/WzzgMd/">CSS Box Model</a> by Saumya Shukla (<a href="https://codepen.io/GirlWhoCodes26">@GirlWhoCodes26</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 <div class="paragraph">
-<p>To understand the code, feel free to refer to the HTML,CSS,JS tabs in the demo.</p>
+<p>To understand the code, feel free to refer to the HTML, CSS, JS tabs in the demo.</p>
 </div>
 </div>]]></description><link>https://saumyashukla2611.github.io/2018/04/01/Live-Demo-for-CSS-Box-Model.html</link><guid isPermaLink="true">https://saumyashukla2611.github.io/2018/04/01/Live-Demo-for-CSS-Box-Model.html</guid><pubDate>Sun, 01 Apr 2018 00:00:00 GMT</pubDate></item><item><title><![CDATA[RShiny Application in R]]></title><description><![CDATA[<div id="preamble">
 <div class="sectionbody">
