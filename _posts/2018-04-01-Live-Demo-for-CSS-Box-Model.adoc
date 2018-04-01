@@ -1,8 +1,12 @@
 = Live Demo for CSS Box Model
 
-Box Model provides us the layout of the web page. A rectangular box represents every HTML element here. Words such as padding, border, margin sounds naïve and familiar but from a front-end developer’s perspective they hold much more importance. Through this article, I am shadowing upon the use of every property in box model.
+Box Model provides us the layout of the web page. A rectangular box represents every HTML element here. Words such as padding, border, margin sound naïve and familiar but from a front-end developer’s perspective they hold much more importance. Through this article, I am shadowing upon the use of these words as a property in box model.
 
 Below is the structure of the CSS Box Model, you can use the buttons in the live demo for each layer step-by -step to understand the model more clearly.
 
 image::https://raw.githubusercontent.com/saumyashukla2611/saumyashukla2611.github.io/master/images/boxmodelfinal.JPG[]
 
+Use the following Demo:
+
+<p data-height="542" data-theme-id="0" data-slug-hash="WzzgMd" data-default-tab="result" data-user="GirlWhoCodes26" data-embed-version="2" data-pen-title="CSS Box Model" class="codepen">See the Pen <a href="https://codepen.io/GirlWhoCodes26/pen/WzzgMd/">CSS Box Model</a> by Saumya Shukla (<a href="https://codepen.io/GirlWhoCodes26">@GirlWhoCodes26</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
