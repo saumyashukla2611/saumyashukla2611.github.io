@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Write — Saumya Shukla</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">Saumya Shukla</a>
+      <button class="nav__toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+      <ul class="nav__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="archive.html">Archive</a></li>
+        <li><a href="editor.html" class="active">Write</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Editor -->
+  <main class="editor-wrap">
+    <input
+      type="text"
+      id="editor-title"
+      class="editor__title-input"
+      placeholder="Title"
+      autocomplete="off"
+    />
+    <input
+      type="text"
+      id="editor-tag"
+      class="editor__tag-input"
+      placeholder="Tags (e.g. Strategy · Leadership)"
+      autocomplete="off"
+    />
+
+    <!-- Toolbar -->
+    <div class="editor__toolbar">
+      <button data-cmd="bold" title="Bold (Ctrl+B)"><strong>B</strong></button>
+      <button data-cmd="italic" title="Italic (Ctrl+I)"><em>I</em></button>
+      <button data-cmd="underline" title="Underline (Ctrl+U)"><u>U</u></button>
+      <button data-cmd="strikeThrough" title="Strikethrough"><s>S</s></button>
+      <div class="separator"></div>
+      <button data-cmd="h2" title="Heading 2">H2</button>
+      <button data-cmd="h3" title="Heading 3">H3</button>
+      <button data-cmd="paragraph" title="Paragraph">P</button>
+      <div class="separator"></div>
+      <button data-cmd="blockquote" title="Blockquote">&ldquo;</button>
+      <button data-cmd="code-block" title="Code Block">&lt;/&gt;</button>
+      <button data-cmd="hr" title="Horizontal Rule">&mdash;</button>
+      <div class="separator"></div>
+      <button data-cmd="insertUnorderedList" title="Bullet List">&bull; List</button>
+      <button data-cmd="insertOrderedList" title="Numbered List">1. List</button>
+      <div class="separator"></div>
+      <button data-cmd="link" title="Insert Link (Ctrl+K)">Link</button>
+      <button data-cmd="image" title="Insert Image">Image</button>
+    </div>
+
+    <!-- Content area -->
+    <div
+      id="editor-content"
+      class="editor__content"
+      contenteditable="true"
+      spellcheck="true"
+    ></div>
+
+    <div id="word-count" class="editor__word-count">0 words &middot; 1 min read</div>
+
+    <!-- Actions -->
+    <div class="editor__actions">
+      <button id="save-draft" class="btn">Save Draft</button>
+      <button id="preview-post" class="btn btn--outline">Preview</button>
+      <button id="export-html" class="btn btn--accent">Export HTML</button>
+      <button id="clear-editor" class="btn btn--outline" style="margin-left:auto;color:var(--muted);border-color:var(--muted);">Clear</button>
+    </div>
+
+    <!-- Saved Drafts -->
+    <div class="drafts" style="display:none;">
+      <h3 class="drafts__title">Your Drafts</h3>
+      <ul class="drafts__list" id="drafts-list"></ul>
+    </div>
+  </main>
+
+  <!-- Link modal -->
+  <div class="modal-overlay" id="link-modal">
+    <div class="modal">
+      <div class="modal__title">Insert Link</div>
+      <input type="url" id="link-url" placeholder="https://example.com" />
+      <input type="text" id="link-text" placeholder="Link text (optional)" />
+      <div class="modal__actions">
+        <button id="link-cancel" class="btn btn--sm btn--outline">Cancel</button>
+        <button id="link-insert" class="btn btn--sm">Insert</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Image modal -->
+  <div class="modal-overlay" id="image-modal">
+    <div class="modal">
+      <div class="modal__title">Insert Image</div>
+      <input type="url" id="image-url" placeholder="https://example.com/image.jpg" />
+      <input type="text" id="image-alt" placeholder="Alt text (optional)" />
+      <div class="modal__actions">
+        <button id="image-cancel" class="btn btn--sm btn--outline">Cancel</button>
+        <button id="image-insert" class="btn btn--sm">Insert</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__name">Saumya Shukla</div>
+      <ul class="footer__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="archive.html">Archive</a></li>
+      </ul>
+      <div class="footer__copy">&copy; 2024 Saumya Shukla. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/editor.js"></script>
+
+</body>
+</html>

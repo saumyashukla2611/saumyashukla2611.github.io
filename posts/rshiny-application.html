@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Building an RShiny Web Application — Saumya Shukla</title>
+  <meta name="description" content="A comprehensive guide to building interactive web applications in R using the Shiny framework.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="../index.html" class="nav__logo">Saumya Shukla</a>
+      <button class="nav__toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+      <ul class="nav__links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../blog.html">Blog</a></li>
+        <li><a href="../archive.html">Archive</a></li>
+        <li><a href="../editor.html">Write</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="post-header container">
+    <div class="post-header__tag">R &middot; Shiny</div>
+    <h1 class="post-header__title">Building an RShiny Web Application</h1>
+    <div class="post-header__meta">February 24, 2018</div>
+  </header>
+
+  <article class="post-content">
+    <p>
+      RShiny is a package from RStudio to build interactive web applications in R. With
+      interactive here means that one can change the input values on the web page and can
+      view the output generated with that input on the web page at the same instance. There
+      is no need to reload the web page for changes to appear. This package completely
+      eliminates the need to use HTML, CSS, Javascript for building a web application.
+    </p>
+
+    <p>A shinyApp consists of two components:</p>
+    <ul>
+      <li><code>ui.r</code> file</li>
+      <li><code>server.r</code> file</li>
+    </ul>
+
+    <h2>The ui.r File</h2>
+
+    <p>
+      This file contains the user interface object. You can define the inputs for the web
+      application in this file. Following are the basic components:
+    </p>
+
+    <pre><code>library(shiny)
+shinyUI(fluidPage())</code></pre>
+
+    <p>
+      In the above code, the first line loads the shiny library. The <code>shinyUI()</code> function
+      builds the UI object for the web application. In shiny, you can have function inside
+      a function. Inside <code>shinyUI()</code> function, you can have various functions for laying out
+      the user interface.
+    </p>
+
+    <p>
+      I am also using <code>fluidPage()</code> function as a parameter for <code>shinyUI()</code> to create a
+      fluid layout.
+    </p>
+
+    <h3>Example ui.r</h3>
+
+    <pre><code># filename: ui.r
+
+library(shiny)
+shinyUI(fluidPage(
+
+  titlePanel("Hello, Welcome to a Rshiny Web Application!!"),
+
+  # sliderInput
+  # builds a slider in the sidebar
+  # @param "obs" input variable name
+  # @param "Number of observations:" Slider title
+  # @param min = 1 min slider value
+  # @param max = 100 max slider value
+  # @param value = 500 By default selected value
+  sidebarLayout(
+    sidebarPanel(
+      sliderInput("obs", "Number of observations:",
+                  min = 1, max = 1000, value = 500)
+    ),
+
+    mainPanel(
+      plotOutput("distPlot")
+      # to print the plot's output where
+      # output variable is distPlot.
+    )
+  )
+))</code></pre>
+
+    <p>
+      Inside <code>fluidPage()</code> function, you can see three components:
+    </p>
+
+    <ul>
+      <li><strong>titlePanel</strong> — includes the title of the webpage.</li>
+      <li><strong>sidebarPanel</strong> — includes the components on the sidebar. By default, sidebar is on
+        the left-hand side, but you can move it towards the right:</li>
+    </ul>
+
+    <pre><code>sidebarLayout(position = "right",
+  sidebarPanel(
+  ),
+  mainPanel(
+  )
+)</code></pre>
+
+    <ul>
+      <li><strong>mainPanel</strong> — includes the center section of the webpage where we can print/display our output.</li>
+    </ul>
+
+    <h2>The server.r File</h2>
+
+    <p>
+      <code>server.r</code> is the file that is responsible for the computational part of the RShiny app.
+    </p>
+
+    <pre><code># filename: server.r
+
+library(shiny)
+shinyServer(function(input, output) {
+
+})</code></pre>
+
+    <p>
+      You can define the output to be generated inside the <code>shinyServer()</code> function. I am going
+      to plot a histogram for randomly generated numbers using <code>rnorm()</code> function.
+    </p>
+
+    <pre><code># filename: server.r
+
+library(shiny)
+shinyServer(function(input, output) {
+  output$distPlot &lt;- renderPlot({
+    dist &lt;- rnorm(input$obs)
+    hist(dist)
+  })
+})</code></pre>
+
+    <p>
+      <code>render</code> is a family of functions which are reactive in nature. This means that the
+      output changes with the change in input. In order to plot a graph, we will use the
+      function <code>renderPlot()</code>.
+    </p>
+
+    <p>
+      You can find the other <code>render</code> functions using the
+      <a href="https://shiny.rstudio.com/reference/shiny/1.0.5/" target="_blank">Shiny reference documentation</a>.
+    </p>
+
+    <h3>Demo</h3>
+
+    <p>You can view the working of the web application from the following video:</p>
+
+    <video controls>
+      <source src="../rshiny.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <h2>The App.r Approach</h2>
+
+    <p>
+      Prior to RShiny version 0.10, there was a need to call <code>shinyUI()</code> and <code>shinyServer()</code>
+      functions in <code>ui.r</code> and <code>server.r</code> files respectively. But from version 0.10,
+      there is no more need to call these functions separately. We can use a single file,
+      <code>App.r</code>, to perform both operations inside a single function called <code>shinyApp()</code>.
+    </p>
+
+    <pre><code># filename: App.r
+
+server &lt;- function(input, output) {
+
+}
+
+ui &lt;- fluidPage(
+  sidebarLayout(
+    sidebarPanel(),
+    mainPanel()
+  )
+)
+shinyApp(ui = ui, server = server)</code></pre>
+
+    <p>
+      The <code>server</code> and <code>ui</code> will work the same as described above.
+      <code>shinyApp()</code> knits the <code>ui</code> and <code>server</code> functions together.
+    </p>
+
+    <hr>
+
+    <h3>References</h3>
+    <ul>
+      <li><a href="https://shiny.rstudio.com/reference/shiny/1.0.5/" target="_blank">Shiny Reference Documentation</a></li>
+      <li><a href="https://shiny.rstudio.com/articles/app-formats.html" target="_blank">Shiny App Formats</a></li>
+    </ul>
+  </article>
+
+  <nav class="post-nav container">
+    <a href="magick-package-r.html">&larr; Previous: Magick Package in R</a>
+    <a href="css-box-model.html">Next: CSS Box Model &rarr;</a>
+  </nav>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__name">Saumya Shukla</div>
+      <ul class="footer__links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../blog.html">Blog</a></li>
+        <li><a href="../archive.html">Archive</a></li>
+      </ul>
+      <div class="footer__copy">&copy; 2024 Saumya Shukla. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+[
+  {
+    "slug": "contact-list-css",
+    "title": "Contact List Using Just CSS",
+    "date": "2018-02-03",
+    "tags": "CSS · Web Dev",
+    "excerpt": "Exploring the power of position: sticky to create an interactive contact list with pure CSS — no JavaScript required.",
+    "file": "contact-list-css.html"
+  },
+  {
+    "slug": "magick-package-r",
+    "title": "Exploring the Magick Package in R",
+    "date": "2018-02-22",
+    "tags": "R · Data Science",
+    "excerpt": "A deep dive into image processing in R using the magick package — from borders and annotations to morphing and animations.",
+    "file": "magick-package-r.html"
+  },
+  {
+    "slug": "rshiny-application",
+    "title": "Building an RShiny Web Application",
+    "date": "2018-02-24",
+    "tags": "R · Shiny",
+    "excerpt": "A comprehensive guide to building interactive web applications in R using the Shiny framework, from UI to server logic.",
+    "file": "rshiny-application.html"
+  },
+  {
+    "slug": "css-box-model",
+    "title": "Live Demo for CSS Box Model",
+    "date": "2018-04-01",
+    "tags": "CSS · Web Dev",
+    "excerpt": "Understanding the CSS box model through an interactive demo — padding, borders, margins, and how they shape every element.",
+    "file": "css-box-model.html"
+  }
+]
