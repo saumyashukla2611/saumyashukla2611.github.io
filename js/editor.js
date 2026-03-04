@@ -457,8 +457,8 @@ document.addEventListener('DOMContentLoaded', () => {
       <ul class="nav__links">
         <li><a href="../index.html">Home</a></li>
         <li><a href="../blog.html">Blog</a></li>
+        <li><a href="../recipes.html">Recipes</a></li>
         <li><a href="../archive.html">Archive</a></li>
-        <li><a href="../editor.html">Write</a></li>
       </ul>
     </div>
   </nav>
@@ -479,6 +479,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <ul class="footer__links">
         <li><a href="../index.html">Home</a></li>
         <li><a href="../blog.html">Blog</a></li>
+        <li><a href="../recipes.html">Recipes</a></li>
         <li><a href="../archive.html">Archive</a></li>
       </ul>
     </div>
