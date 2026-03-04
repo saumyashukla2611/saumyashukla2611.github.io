@@ -1,0 +1,9 @@
+[
+  {
+    "slug": "chickpea-salad",
+    "title": "Chickpea Salad",
+    "description": "Crispy baked chickpeas tossed with fresh greens and tangy chutneys — a vibrant, flavor-packed salad.",
+    "ingredients": ["chickpeas", "lettuce", "green pani puri chutney", "tamarind chutney", "green onions", "lemon"],
+    "file": "chickpea-salad.html"
+  }
+]
